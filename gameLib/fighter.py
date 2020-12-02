@@ -82,8 +82,8 @@ class Fighter(GameScene):
             # 拒绝悬赏
             self.yys.rejectbounty()
 
-            maxVal, maxLoc = self.yys.find_multi_img(
-                'img/SHENG-LI.png', 'img/TIAO-DAN.png', 'img/JIN-BI.png', 'img/JIE-SU.png')
+            # maxVal, maxLoc = self.yys.find_multi_img('img/SHENG-LI.png', 'img/TIAO-DAN.png', 'img/JIN-BI.png', 'img/JIE-SU.png')
+            maxVal, maxLoc = self.yys.find_multi_img('img/END.png')
             end_cof = max(maxVal)
             if end_cof > 0.9:
                 myend = maxVal.index(end_cof)
@@ -153,8 +153,8 @@ class Fighter(GameScene):
                 continue
 
             # 正常结算
-            maxVal, maxLoc = self.yys.find_multi_img(
-                'img/SHENG-LI.png', 'img/TIAO-DAN.png', 'img/JIN-BI.png', 'img/JIE-SU.png')
+            # maxVal, maxLoc = self.yys.find_multi_img('img/SHENG-LI.png', 'img/TIAO-DAN.png', 'img/JIN-BI.png', 'img/JIE-SU.png')
+            maxVal, maxLoc = self.yys.find_multi_img('img/END.png')
             if max(maxVal) < 0.9:
                 self.log.info('结算成功')
                 return

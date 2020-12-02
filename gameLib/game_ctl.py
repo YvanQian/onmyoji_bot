@@ -389,7 +389,7 @@ class GameControl():
                 ' '+str(pos2[0])+' '+str(pos2[1])
             os.system('adb shell input swipe '+command)
 
-    def wait_game_img(self, img_path, max_time=100, quit=True):
+    def wait_game_img(self, img_path, max_time=100, quit=True, spec=0):
         """
         等待游戏图像
             :param img_path: 图片路径
@@ -400,7 +400,10 @@ class GameControl():
         self.rejectbounty()
         start_time = time.time()
         while time.time()-start_time <= max_time and self.run:
-            maxVal, maxLoc = self.find_img(img_path)
+            if spec == 1:
+                maxVal, maxLoc = self.find_img(img_path, 1, (1000,150), (1100,200))
+            else:
+                maxVal, maxLoc = self.find_img(img_path)
             if maxVal > 0.9:
                 return maxLoc
             if max_time > 5:

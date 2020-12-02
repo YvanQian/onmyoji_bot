@@ -48,8 +48,8 @@ class ExploreFight(Fighter):
         '''
         移动至下一个场景，每次移动400像素
         '''
-        x0 = random.randint(510, 1126)
-        x1 = x0 - 500
+        x0 = random.randint(1000, 1126)
+        x1 = x0 - 600
         y0 = random.randint(110, 210)
         y1 = random.randint(110, 210)
         self.yys.mouse_drag_bg((x0, y0), (x1, y1))
@@ -144,15 +144,19 @@ class ExploreFight(Fighter):
             return: 成功返回经验怪的攻打图标位置；失败返回-1
         '''
         # 查找经验图标
-        exp_pos = self.yys.find_color(
-            ((2, 205), (1127, 545)), (140, 122, 44), 2)
+        exp_pos = self.yys.find_color(((2, 205), (1127, 545)), (140, 122, 44), 2)
+        self.log.info(exp_pos)
         if exp_pos == -1:
-            exp_pos = self.yys.find_img_knn(
-                'img\\EXP.png', 1, (2, 205), (1127, 545))
+            exp_pos = self.yys.find_img_knn('img\\EXP-NEW.png', 1, (2, 205), (1127, 545))
             if exp_pos == (0, 0):
                 return -1
             else:
                 exp_pos = (exp_pos[0]+2, exp_pos[1]+205)
+        # exp_pos = self.yys.find_img_knn('img\\EXP-NEW.png', 1, (2, 205), (1127, 545))
+        # if exp_pos == (0, 0):
+        #     return -1
+        # else:
+        #     exp_pos = (exp_pos[0]+2, exp_pos[1]+205)
 
         # 查找经验怪攻打图标位置
         find_pos = self.yys.find_game_img(
