@@ -1,0 +1,4 @@
+log.log
+.vscode/settings.json
+*.pyc
+img/screenshots/*
