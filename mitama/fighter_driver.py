@@ -24,7 +24,8 @@ class DriverFighter(Fighter):
         # 战斗主循环
         # self.yys.wait_game_img('img\\KAI-SHI-ZHAN-DOU.png',
         #                        self.max_win_time)
-        self.yys.wait_game_img('img\\MAN-YUAN.png',self.max_win_time,True,1)
+        # self.yys.wait_game_img('img\\MAN-YUAN.png',self.max_win_time,True,1)
+        self.yys.wait_game_color_three(((565,220),(575,230)), ((960,220),(970,230)), (255,255,255),0,self.max_win_time,True)
         while self.run:
             # 司机点击开始战斗，需要锁定御魂阵容
             mood1.moodsleep()
@@ -52,7 +53,7 @@ class DriverFighter(Fighter):
             self.log.info('Driver: 等待下一轮')
             start_time = time.time()
             while time.time() - start_time <= 20 and self.run:
-                if(self.yys.wait_game_img('img\\MAN-YUAN.png',1,False,1)):
+                if(self.yys.wait_game_color_three(((565,220),(575,230)), ((960,220),(970,230)), (255,255,255),0,1,False)):
                     self.log.info('Driver: 进入队伍')
                     break
 

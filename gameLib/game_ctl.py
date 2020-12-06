@@ -463,6 +463,31 @@ class GameControl():
         else:
             return False
 
+    def wait_game_color_three(self, region1, region2, color, tolerance=0, max_time=60, quit=True):
+        """
+        等待游戏颜色
+            :param region: ((x1,y1),(x2,y2)) 欲搜索的区域
+            :param color: (r,g,b) 欲等待的颜色
+            :param tolerance=0: 容差值
+            :param max_time=30: 超时时间
+            :param quit=True: 超时后是否退出
+            :return: 成功返回True，失败返回False
+        """
+        self.rejectbounty()
+        start_time = time.time()
+        while time.time()-start_time <= max_time and self.run:
+            pos = self.find_color(region1, color)
+            if pos == -1:
+                pos2 = self.find_color(region2, color)
+                if pos2 == -1:
+                    return True
+            time.sleep(1)
+        if quit:
+            # 超时则退出游戏
+            self.quit_game()
+        else:
+            return False
+
     def quit_game(self):
         """
         退出游戏
