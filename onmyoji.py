@@ -6,6 +6,7 @@ from goryou.single_fight import GoryouFight
 from mitama.dual import DualFighter
 from mitama.fighter_driver import DriverFighter
 from mitama.fighter_passenger import FighterPassenger
+from mitama.fighter_passenger_double import FighterPassengerDouble
 from mitama.single_fight import SingleFight
 from tools.logsystem import MyLog
 
@@ -55,6 +56,9 @@ def init():
         elif mode == 3:
             # 双开
             fight = DualFighter()
+        
+        elif mode == 4:
+            fight = FighterPassengerDouble()
 
     elif section == 1:
         # 御灵
