@@ -6,7 +6,7 @@ import tools.utilities as ut
 import time
 
 
-class DriverFighter(Fighter):
+class DriverFighterThree(Fighter):
     '''御魂战斗司机程序，参数mode, emyc'''
 
     def __init__(self, emyc=0, hwnd=0):
@@ -22,8 +22,7 @@ class DriverFighter(Fighter):
         mood3 = ut.Mood(3)
 
         # 战斗主循环
-        self.yys.wait_game_img('img\\KAI-SHI-ZHAN-DOU.png',
-                               self.max_win_time)
+        self.yys.wait_game_color_three(((565,220),(575,230)), ((960,220),(970,230)), (255,255,255),0,self.max_win_time,True)
         while self.run:
             # 司机点击开始战斗，需要锁定御魂阵容
             mood1.moodsleep()
@@ -51,7 +50,7 @@ class DriverFighter(Fighter):
             self.log.info('Driver: 等待下一轮')
             start_time = time.time()
             while time.time() - start_time <= 20 and self.run:
-                if(self.yys.wait_game_img('img\\KAI-SHI-ZHAN-DOU.png', 1, False)):
+                if(self.yys.wait_game_color_three(((565,220),(575,230)), ((960,220),(970,230)), (255,255,255),0,1,False)):
                     self.log.info('Driver: 进入队伍')
                     break
 
